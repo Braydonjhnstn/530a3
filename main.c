@@ -41,9 +41,6 @@ int main(int argc, char *argv[]) {
     
     // process each line from the input file
     while (fgets(line, sizeof(line), input_file) != NULL) {
-        // keep track of original line length for printing later
-        size_t original_len = strlen(line);
-        
         // make a copy of the line for parsing, need to strip newline for the parser
         char working_line[1024];
         strncpy(working_line, line, sizeof(working_line) - 1);

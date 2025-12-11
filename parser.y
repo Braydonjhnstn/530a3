@@ -102,7 +102,12 @@ void yyerror(const char *s) {
         // If invalid_token_seen is set, that's the token that should be reported (like ":")
         // Otherwise, report the stored token (like "24")
         if (strlen(invalid_token_text) > 0) {
-            snprintf(error_message, sizeof(error_message), "invalid token \"%s\"", invalid_token_text);
+            // limit the token text to fit in the error message buffer
+            // error_message is 256 bytes, "invalid token \"\"" is 18 bytes, so we have ~238 for the token
+            char limited_token[240];
+            strncpy(limited_token, invalid_token_text, sizeof(limited_token) - 1);
+            limited_token[sizeof(limited_token) - 1] = '\0';
+            snprintf(error_message, sizeof(error_message), "invalid token \"%s\"", limited_token);
         } else {
             snprintf(error_message, sizeof(error_message), "invalid token");
         }

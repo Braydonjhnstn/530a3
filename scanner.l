@@ -23,6 +23,8 @@ extern int op_op_error;                // flag for consecutive operator error
 
 %option noyywrap
 %option yylineno
+%option nounput
+%option noinput
 
 %%
 
