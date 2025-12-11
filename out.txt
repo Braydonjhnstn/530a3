@@ -1,0 +1,24 @@
+good = one1 + two2 - three3 / four4 ;   -- valid
+good = one1 / two2 * three3 ;           -- valid
+good = one1 * two2 + three3 ;           -- valid
+good = ONE + twenty - three3 ;          -- valid
+good = old * thirty2 / b567 ;           -- valid
+good * i8766e98e + bignum               -- valid
+good % a4 + bignum                      -- valid
+good * one - two2 / three3              -- valid
+good = four4 * two2 * three3 ;          -- valid
+good * (one + two) * three              -- valid
+good * one + two * three / four - five  -- valid
+good * one - two2 / three3              -- valid
+bad = = one1 + two2 - three3 / four4 ;  -- invalid: op op (or print 
+"invalid expression")
+bad = one1 + two2 - three3 / four4      -- invalid: invalid assignment
+bad = 1 + - two2 - three3 / four4 ;     -- invalid: op op
+bad = one1 + two2 ? three3 / four4 ;    -- invalid: invalid token "?"
+bad = one1 + 24 - three3 :              -- invalid: invalid token ":"
+bad +- delta                            -- invalid: invalid token "+-"
+bad + - delta                           -- invalid: op op (or print 
+"invalid expression")
+bad / min = fourth ;                    -- invalid: invalid assignment
+bad = a ! b                             -- invalid: invalid token "!"
+bad * 2two + 3three                     -- invalid: invalid token "2two"

@@ -9,9 +9,6 @@ parser.tab.h
 # Executable
 scanner
 
-# Output files
-out.txt
-output*.txt
 
 # Editor files
 *~
