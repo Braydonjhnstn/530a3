@@ -5,47 +5,49 @@
 ## CS530-03 Fall 2025
 ##
 
-## Files in Project
+## Files
 
-# Source Code
-- main.c          - Main program for file I/O and statement processing
-- scanner.l       - Flex lexer file defining tokens
-- parser.y        - Bison parser file defining grammar rules
+# source Code
+- main.c          - main program for file I/O and statement processing
+- scanner.l       - flex lexer file defining tokens
+- parser.y        - bison parser file defining grammar rules
 
-# Test Files
-- scanme.txt              - Main test file with valid and invalid statements
-- test1.txt               - Additional test file 1
-- test2.txt               - Additional test file 2
-- test3.txt               - Additional test file 3 with unique cases
-- test1_expected.txt      - Expected output for test1.txt
-- test2_expected.txt      - Expected output for test2.txt
-- test3_expected.txt      - Expected output for test3.txt
-- out.txt                 - Output file (if generated)
+# tests
+- scanme.txt              - main test file 
+- test1.txt               - my test files
+- test2.txt               - my test files
+- test3.txt               - my test files
+- test1_expected.txt      - expected output 1
+- test2_expected.txt      - expected output 2
+- test3_expected.txt      - expected output 3
+- out.txt                 - main expected output
 
-# Build Files
-- Makefile        - Build configuration for compiling the project
+# other
+- Makefile        - build config for compiling easily
+- README          - this file
+- gitignore       - used to not push generate files to git
 
-# Generated Files (created during compilation)
-- lex.yy.c        - Generated C code from scanner.l
-- parser.tab.c    - Generated C code from parser.y
-- parser.tab.h    - Generated header file from parser.y
-- scanner         - Executable program (must be named 'scanner')
+# generated
+- lex.yy.c        - generated C code from scanner.l
+- parser.tab.c    - generated C code from parser.y
+- parser.tab.h    - generated header file from parser.y
+- scanner         - executable
 
-## Compile Instructions
+## compile instructions
 
-# Using Makefile:
+# using Makefile:
 - cd a3 and type:
 	make
 
-# To clean generated files:
+# to clean generated files:
 	make clean
 
-# To run the scanner:
+# to run the scanner:
 	./scanner [filename]
 
-If no filename is provided, defaults to 'scanme.txt'
+if no filename is provided auto runs scanme.txt
 
-# Example usage:
+# example usage:
 	./scanner scanme.txt
 	./scanner test1.txt
 
@@ -84,46 +86,45 @@ Where:
 - RPAREN is ')'
 - NEWLINE is '\n'
 
-Spacing Rules:
+spacing rules:
 - ID, OP, ASSIGN, and SEMICOLON must have a space before and after
 - LPAREN must have a space before (but not necessarily after)
 - RPAREN must have a space before (but not necessarily after)
 
-## Output Format
+## output format
 
-The scanner prints each statement followed by its validation result:
+the scanner prints each statement followed by its validation result:
 - Valid statements: `[statement]  --  valid`
 - Invalid statements: `[statement]  --  invalid: [reason]`
 
-Error messages include:
+error messages include:
 - "op op" - for consecutive operators
 - "invalid token \"X\"" - for invalid characters/tokens
 - "invalid assignment" - for assignment syntax errors
 - "missing expression" - for incomplete expressions
 - "syntax error" - for other syntax issues
 
-## Tool Versions
+## tool versions, matched with edoras
 - flex 2.6.1
 - bison 3.0.4
 - gcc 8.5.0
 - GNU Make 4.2.1
 
-## Significant Design Decisions
+## significant design decisions
 
-- Used flex and bison for lexing and parsing
-- Implemented pre-scanning to detect "op op" errors before parsing
-- Prioritized certain error types (e.g., "op op" over invalid tokens)
-- Handled Windows line endings (\r\n) in input files
-- Trimmed leading spaces for display while preserving full line content
+- used flex and bison for lexing and parsing as per assignment specificions 
+- implemented pre-scanning to detect "op op" errors before parsing
+- prioritized certain error types (e.g., "op op" over invalid tokens)
+- handled Windows line endings (\r\n) in input files
+- trimmed leading spaces for display while preserving full line content
 
-## Known Deficiencies/Bugs
+## known deficiencies
+- some warnings thrown when make , i believe it depends on os
 
-- None known at this time
+## lessons learned
 
-## Lessons Learned
-
-- Understanding shift/reduce conflicts in bison grammars
-- Proper error recovery and reporting in parsers
-- Handling edge cases with parentheses and operators
-- Importance of testing with various invalid input cases
-- Managing lexer and parser state between multiple input lines
+- understanding shift/reduce conflicts in bison grammars
+- proper error recovery and reporting in parsers
+- handling edge cases with parentheses and operators
+- omportance of testing with various invalid input cases
+- managing lexer and parser state between multiple input lines
