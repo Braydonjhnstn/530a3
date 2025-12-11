@@ -1,0 +1,129 @@
+##
+## README.md
+## Name: Braydon Johnston REDid: 131049942 Class Acc: cssc2115
+## Assignment 3
+## CS530-03 Fall 2025
+##
+
+## Files in Project
+
+# Source Code
+- main.c          - Main program for file I/O and statement processing
+- scanner.l       - Flex lexer file defining tokens
+- parser.y        - Bison parser file defining grammar rules
+
+# Test Files
+- scanme.txt              - Main test file with valid and invalid statements
+- test1.txt               - Additional test file 1
+- test2.txt               - Additional test file 2
+- test3.txt               - Additional test file 3 with unique cases
+- test1_expected.txt      - Expected output for test1.txt
+- test2_expected.txt      - Expected output for test2.txt
+- test3_expected.txt      - Expected output for test3.txt
+- out.txt                 - Output file (if generated)
+
+# Build Files
+- Makefile        - Build configuration for compiling the project
+
+# Generated Files (created during compilation)
+- lex.yy.c        - Generated C code from scanner.l
+- parser.tab.c    - Generated C code from parser.y
+- parser.tab.h    - Generated header file from parser.y
+- scanner         - Executable program (must be named 'scanner')
+
+## Compile Instructions
+
+# Using Makefile:
+- cd a3 and type:
+	make
+
+# To clean generated files:
+	make clean
+
+# To run the scanner:
+	./scanner [filename]
+
+If no filename is provided, defaults to 'scanme.txt'
+
+# Example usage:
+	./scanner scanme.txt
+	./scanner test1.txt
+
+## BNF Grammar
+
+<program>         ::= <statement_list>
+<statement_list>  ::= <statement> NEWLINE <statement_list>
+                    | <statement> NEWLINE
+                    | <statement>
+                    | ε
+
+<statement>       ::= <assignment>
+                    | <expression>
+
+<assignment>      ::= ID ASSIGN <expression> SEMICOLON
+
+<atom>            ::= ID
+                    | LPAREN ID OP ID RPAREN
+
+<expression>      ::= <atom> OP <atom>
+                    | <expression> OP <atom>
+
+OP                ::= OP_PLUS | OP_MINUS | OP_MULT | OP_DIV | OP_MOD
+
+Where:
+- ID is an identifier: starts with a character (a-z, A-Z), followed by any 
+  combination of characters and digits (0-9)
+- OP_PLUS is '+'
+- OP_MINUS is '-'
+- OP_MULT is '*'
+- OP_DIV is '/'
+- OP_MOD is '%'
+- ASSIGN is '='
+- SEMICOLON is ';'
+- LPAREN is '('
+- RPAREN is ')'
+- NEWLINE is '\n'
+
+Spacing Rules:
+- ID, OP, ASSIGN, and SEMICOLON must have a space before and after
+- LPAREN must have a space before (but not necessarily after)
+- RPAREN must have a space before (but not necessarily after)
+
+## Output Format
+
+The scanner prints each statement followed by its validation result:
+- Valid statements: `[statement]  --  valid`
+- Invalid statements: `[statement]  --  invalid: [reason]`
+
+Error messages include:
+- "op op" - for consecutive operators
+- "invalid token \"X\"" - for invalid characters/tokens
+- "invalid assignment" - for assignment syntax errors
+- "missing expression" - for incomplete expressions
+- "syntax error" - for other syntax issues
+
+## Tool Versions
+- flex 2.6.1
+- bison 3.0.4
+- gcc 8.5.0
+- GNU Make 4.2.1
+
+## Significant Design Decisions
+
+- Used flex and bison for lexing and parsing
+- Implemented pre-scanning to detect "op op" errors before parsing
+- Prioritized certain error types (e.g., "op op" over invalid tokens)
+- Handled Windows line endings (\r\n) in input files
+- Trimmed leading spaces for display while preserving full line content
+
+## Known Deficiencies/Bugs
+
+- None known at this time
+
+## Lessons Learned
+
+- Understanding shift/reduce conflicts in bison grammars
+- Proper error recovery and reporting in parsers
+- Handling edge cases with parentheses and operators
+- Importance of testing with various invalid input cases
+- Managing lexer and parser state between multiple input lines

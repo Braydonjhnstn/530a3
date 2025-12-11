@@ -1,0 +1,6 @@
+ good = a + b ;  
+ good * x - y  
+ bad = = c + d ;  
+ bad = e + 5 ;  
+ bad + - f  
+

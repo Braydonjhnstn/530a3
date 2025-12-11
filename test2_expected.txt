@@ -1,0 +1,5 @@
+var = (x + y) * z ;    --  valid
+var1 + var2 - var3    --  valid
+bad = a ? b ;    --  invalid: invalid token "?"
+bad * 2x + 3y    --  invalid: invalid token "2x"
+bad = m + n    --  invalid: invalid assignment

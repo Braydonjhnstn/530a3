@@ -1,0 +1,11 @@
+a = (b + c) ;    --  invalid: missing expression
+x * (y + z) - w    --  valid
+bad = @ symbol ;    --  invalid: invalid token "@"
+bad = # hash ;    --  invalid: invalid token "#"
+bad = $ dollar ;    --  invalid: invalid token "$"
+bad = a & b ;    --  invalid: invalid token "&"
+bad = a | b ;    --  invalid: invalid token "|"
+bad = a ^ b ;    --  invalid: invalid token "^"
+bad = (a + b ;    --  invalid: missing expression
+bad = a + b) ;    --  invalid: syntax error
+bad = ) a + b ( ;    --  invalid: syntax error

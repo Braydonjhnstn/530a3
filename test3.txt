@@ -1,0 +1,12 @@
+ a = (b + c) ;  
+ x * (y + z) - w  
+ bad = @ symbol ;  
+ bad = # hash ;  
+ bad = $ dollar ;  
+ bad = a & b ;  
+ bad = a | b ;  
+ bad = a ^ b ;  
+ bad = (a + b ;  
+ bad = a + b) ;  
+ bad = ) a + b ( ;  
+

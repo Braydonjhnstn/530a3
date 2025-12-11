@@ -1,0 +1,20 @@
+# Generated files from flex and bison
+lex.yy.c
+parser.tab.c
+parser.tab.h
+
+# Object files
+*.o
+
+# Executable
+scanner
+
+# Output files
+out.txt
+output*.txt
+
+# Editor files
+*~
+*.swp
+.DS_Store
+

@@ -1,0 +1,5 @@
+good = a + b ;    --  valid
+good * x - y    --  valid
+bad = = c + d ;    --  invalid: op op
+bad = e + 5 ;    --  invalid: invalid token "5"
+bad + - f    --  invalid: op op
